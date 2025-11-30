@@ -1,0 +1,1407 @@
+/* ---------------------------------------- */
+/* Root Variables & Base Styles             */
+/* ---------------------------------------- */
+:root {
+    --primary: #667eea;
+    --secondary: #764ba2;
+    --accent: #f093fb;
+    --muted: #95a5a6;
+
+    --bg-light: #f8f9fa;
+    --card-bg: #ffffff;
+    --border: #e6e8ec;
+    --success: #10b981;
+    --danger: #ef4444;
+
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.06);
+    --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Inter, system-ui, Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: #333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* ---------------------------------------- */
+/* Auth Page                                */
+/* ---------------------------------------- */
+
+.auth-bg {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.card {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+    font-size: 56px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    animation: slideIn 0.6s ease;
+}
+
+.auth-logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 16px;
+    display: block;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    animation: slideIn 0.6s ease;
+    object-fit: cover;
+}
+
+.card h1 {
+    margin: 16px 0 8px;
+    font-weight: 700;
+    font-size: 28px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card input {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 10px 0;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    background: var(--bg-light);
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.card input::placeholder {
+    color: #999;
+}
+
+.card input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ---------------------------------------- */
+/* Buttons                                  */
+/* ---------------------------------------- */
+
+.roles,
+.buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.roles label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn.alt {
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+}
+
+.btn.alt:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 147, 251, 0.4);
+}
+
+.btn.small {
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* ---------------------------------------- */
+/* Layout: Sidebar & Main Area              */
+/* ---------------------------------------- */
+
+.container {
+    display: flex;
+    height: calc(100vh - 70px);
+    background: linear-gradient(135deg, var(--bg-light), #f0f2f5);
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo-small {
+    font-size: 18px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.sidebar {
+    width: 280px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.98);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+}
+
+.profile-section {
+    text-align: center;
+    padding-bottom: 16px;
+}
+
+.profile-avatar {
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+}
+
+#profile-username {
+    margin: 8px 0 4px;
+    color: var(--primary);
+    font-size: 18px;
+}
+
+#profile-role {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.sidebar hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-btn {
+    padding: 12px;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.nav-btn:hover {
+    background: var(--bg-light);
+    border-color: var(--primary);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.activity-item {
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+    background: var(--bg-light);
+    transform: translateX(4px);
+    border-color: var(--primary);
+}
+
+.activity-item.completed {
+    opacity: 0.7;
+    background: rgba(16, 185, 129, 0.08);
+    border-left: 4px solid var(--success);
+}
+
+.activity-item-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.activity-item-meta {
+    font-size: 12px;
+    color: #999;
+}
+
+#activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#activity-list li {
+    padding: 14px;
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: #fff;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#activity-list li:hover {
+    background: var(--bg-light);
+    transform: translateX(4px);
+    border-color: var(--primary);
+}
+
+#activity-list li.completed {
+    opacity: 0.7;
+    text-decoration: line-through;
+    background: rgba(16, 185, 129, 0.08);
+}
+
+.main {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+#activity-area {
+    animation: fadeIn 0.3s ease;
+}
+
+#activity-title {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+
+/* ---------------------------------------- */
+/* Activity Cards & UI Components           */
+/* ---------------------------------------- */
+
+.activity-card {
+    background: var(--card-bg);
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    animation: fadeIn 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.activity-card p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.choice {
+    display: block;
+    margin: 10px 0;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    background: #fff;
+}
+
+.choice:hover {
+    background: var(--bg-light);
+    border-color: var(--primary);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form > div {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+form > div > div {
+    font-weight: 500;
+    flex: 0 0 auto;
+    min-width: 150px;
+}
+
+form input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ---------------------------------------- */
+/* Mobile Sidebar & Responsive Design      */
+/* ---------------------------------------- */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary);
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: var(--bg-light);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    animation: fadeIn 0.3s ease;
+}
+
+.sidebar-close {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--primary);
+    float: right;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.sidebar-close:hover {
+    background: var(--bg-light);
+}
+
+/* Mobile styles for screens smaller than 768px */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+    }
+
+    .logo-small {
+        font-size: 16px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .logo-small img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .user-info {
+        font-size: 12px;
+        gap: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    .user-info span {
+        display: none;
+    }
+
+    .btn.small {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 56px;
+        width: 75%;
+        max-width: 300px;
+        height: calc(100vh - 56px);
+        background: rgba(255, 255, 255, 0.98);
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+        z-index: 100;
+        padding: 20px;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-close {
+        display: block;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main {
+        width: 100%;
+        padding: 16px 12px;
+    }
+
+    .profile-section {
+        padding-bottom: 12px;
+    }
+
+    .profile-avatar {
+        font-size: 40px;
+        width: 70px;
+        height: 70px;
+    }
+
+    #profile-username {
+        font-size: 16px;
+    }
+
+    .sidebar-nav {
+        gap: 6px;
+    }
+
+    .nav-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Teacher sidebar */
+    .teacher-layout {
+        position: relative;
+    }
+
+    .teacher-sidebar {
+        position: fixed;
+        left: -100%;
+        top: 56px;
+        width: 75%;
+        max-width: 300px;
+        height: calc(100vh - 56px);
+        overflow-y: auto;
+        z-index: 100;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .teacher-sidebar.active {
+        left: 0;
+    }
+
+    .teacher-sidebar h3 {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .teacher-sidebar h4 {
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .teacher-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 12px 0;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-number {
+        font-size: 18px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .teacher-main {
+        width: 100%;
+    }
+
+    .section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .section-header h2 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    #new-activity-btn {
+        width: 100%;
+    }
+
+    /* Activity list styles for mobile */
+    #activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0;
+        margin: 0 0 16px 0;
+    }
+
+    #activity-list li {
+        list-style: none;
+    }
+
+    #activity-list button {
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    #teacher-student-list,
+    #teacher-activity-list {
+        font-size: 13px;
+        padding: 0 0 0 12px;
+    }
+
+    #teacher-student-list li,
+    #teacher-activity-list li {
+        margin: 6px 0;
+        padding: 4px 0;
+    }
+}
+
+/* Tablet styles (768px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .sidebar {
+        width: 240px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .profile-avatar {
+        font-size: 40px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .teacher-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Desktop styles (1025px and above) */
+@media (min-width: 1025px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .sidebar {
+        width: 280px;
+        position: relative;
+        left: 0;
+        top: 0;
+        height: auto;
+        border-right: 1px solid var(--border);
+    }
+
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    .sidebar-close {
+        display: none;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .main {
+        flex: 1;
+        padding: 28px;
+    }
+
+    .teacher-layout {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .teacher-sidebar {
+        width: 280px;
+        position: relative;
+        left: 0;
+        top: 0;
+        height: auto;
+    }
+
+    .teacher-main {
+        flex: 1;
+    }
+}/* ---------------------------------------- */
+/* Drag and Drop                            */
+/* ---------------------------------------- */
+
+.drag-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+.dropzone {
+    flex: 1;
+    min-height: 240px;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+    border-radius: var(--radius-md);
+    border: 2px dashed #dfe3eb;
+    transition: all 0.2s ease;
+}
+
+.dropzone h4 {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dropzone.active {
+    border-color: var(--primary);
+    background: rgba(102, 126, 234, 0.08);
+}
+
+.draggable {
+    padding: 12px 16px;
+    margin: 6px;
+    background: linear-gradient(135deg, #fff, var(--bg-light));
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    cursor: grab;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.draggable:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.draggable:active {
+    cursor: grabbing;
+    opacity: 0.7;
+}
+
+/* ---------------------------------------- */
+/* Crossword Grid                           */
+/* ---------------------------------------- */
+
+form div {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+form div > div:first-child {
+    flex: 0 0 40%;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    background: var(--bg-light);
+    font-weight: 600;
+    color: var(--primary);
+    align-self: center;
+}
+
+.crossword-grid input {
+    width: 46px;
+    height: 46px;
+    margin: 2px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.crossword-grid input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: #fff;
+}
+
+/* ---------------------------------------- */
+/* Error Messages                           */
+/* ---------------------------------------- */
+
+#auth-error {
+    display: none;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--danger);
+    font-size: 13px;
+    margin-bottom: 12px;
+    animation: slideIn 0.3s ease;
+}
+
+/* ---------------------------------------- */
+/* Scrollbar Styling                        */
+/* ---------------------------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* ---------------------------------------- */
+/* Teacher Dashboard Styles                 */
+/* ---------------------------------------- */
+
+.teacher-layout {
+    display: flex;
+    height: calc(100vh - 70px);
+}
+
+.teacher-sidebar {
+    width: 300px;
+    background: linear-gradient(180deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+}
+
+.teacher-sidebar h3 {
+    margin: 0 0 16px;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.teacher-sidebar h4 {
+    margin: 16px 0 12px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.teacher-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    animation: fadeIn 0.4s ease;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.teacher-sidebar hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+}
+
+#teacher-activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.teacher-activity-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+.teacher-activity-item:hover {
+    background: var(--bg-light);
+    transform: translateX(4px);
+    border-color: var(--primary);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.teacher-main {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.welcome-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+    border-left: 4px solid var(--primary);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+.activity-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.info-item {
+    background: var(--bg-light);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.info-item strong {
+    color: var(--primary);
+}
+
+#teacher-student-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.student-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #fff;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+.student-item:hover {
+    background: var(--bg-light);
+    transform: translateX(4px);
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(240, 147, 251, 0.1);
+}
+
+#teacher-activity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.student-progress {
+    display: grid;
+    gap: 12px;
+}
+
+.progress-item {
+    background: var(--bg-light);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--muted);
+    transition: all 0.2s ease;
+}
+
+.progress-item.completed {
+    background: rgba(16, 185, 129, 0.08);
+    border-left-color: var(--success);
+}
+
+.progress-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.progress-status {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ---------------------------------------- */
+/* Activity Creation Form                   */
+/* ---------------------------------------- */
+
+.create-form {
+    display: grid;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    font-size: 14px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: #fff;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* ---------------------------------------- */
+/* Progress Dashboard                       */
+/* ---------------------------------------- */
+
+.progress-dashboard {
+    animation: fadeIn 0.3s ease;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.progress-stat {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    border-left: 4px solid var(--primary);
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.progress-list {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+}
+
+.progress-list h3 {
+    margin: 0 0 16px;
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.progress-item {
+    padding: 14px;
+    margin-bottom: 10px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--muted);
+    transition: all 0.2s ease;
+}
+
+.progress-item.completed {
+    background: rgba(16, 185, 129, 0.08);
+    border-left-color: var(--success);
+}
+
+.progress-item-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.progress-item-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+}
+
+/* ---------------------------------------- */
+/* Profile Section                          */
+/* ---------------------------------------- */
+
+.profile-card {
+    background: #fff;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+    animation: fadeIn 0.3s ease;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.profile-pic-wrapper {
+    position: relative;
+}
+
+.profile-pic {
+    font-size: 64px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-upload {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.btn-upload:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.profile-basic h3 {
+    margin: 0 0 4px;
+    color: var(--primary);
+    font-size: 24px;
+}
+
+.profile-basic p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.profile-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+}
+
+.profile-stat .stat-icon {
+    font-size: 24px;
+}
+
+.profile-stat .stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.profile-stat .stat-label {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.profile-section {
+    margin-top: 20px;
+}
+
+.profile-section h4 {
+    margin: 0 0 16px;
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#profile-form {
+    display: grid;
+    gap: 14px;
+}
+
+.form-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.form-input-group input {
+    flex: 1;
+}
+
+.btn-sm {
+    padding: 8px 12px;
+    font-size: 12px;
+}
+
+.profile-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--border);
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.profile-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
